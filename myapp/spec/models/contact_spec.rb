@@ -6,6 +6,10 @@ RSpec.describe Contact, type: :model do
 		expect(FactoryGirl.create(:contact)).to be_valid
 	end
 
+    it "phone number should not longer than 10" do
+        expect(FactoryGirl.build(:contact, phone_number: 1234510101010101010)).not_to be_valid
+    end
+
 	it "is invalid without a firstname" do
 		expect(FactoryGirl.build(:contact, full_name: nil)).not_to be_valid
 	end
